@@ -312,7 +312,7 @@ void cgit_log_link(const char *name, const char *title, const char *class,
 	char *delim;
 
 	delim = repolink(title, class, "log", head, path);
-	if (rev && ctx.qry.head && strcmp(rev, ctx.qry.head)) {
+	if (rev && ctx.qry.head != NULL && strcmp(rev, ctx.qry.head)) {
 		html(delim);
 		html("id=");
 		html_url_arg(rev);
@@ -360,7 +360,7 @@ void cgit_commit_link(char *name, const char *title, const char *class,
 	char *delim;
 
 	delim = repolink(title, class, "commit", head, path);
-	if (rev && ctx.qry.head && strcmp(rev, ctx.qry.head)) {
+	if (rev && ctx.qry.head != NULL && strcmp(rev, ctx.qry.head)) {
 		html(delim);
 		html("id=");
 		html_url_arg(rev);
@@ -985,7 +985,7 @@ void cgit_print_pageheader(void)
 		cgit_refs_link("refs", NULL, hc("refs"), ctx.qry.head,
 			       ctx.qry.sha1, NULL);
 		cgit_log_link("log", NULL, hc("log"), ctx.qry.head,
-			      NULL, ctx.qry.vpath, 0, NULL, NULL,
+			      ctx.qry.sha1, ctx.qry.vpath, 0, NULL, NULL,
 			      ctx.qry.showmsg, ctx.qry.follow);
 		cgit_tree_link("tree", NULL, hc("tree"), ctx.qry.head,
 			       ctx.qry.sha1, ctx.qry.vpath);
