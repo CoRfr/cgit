@@ -79,6 +79,8 @@ static void repo_config(struct cgit_repo *repo, const char *name, const char *va
 		item->util = xstrdup(value);
 	} else if (!strcmp(name, "section"))
 		repo->section = xstrdup(value);
+	else if (!strcmp(name, "show-all-refs"))
+		repo->show_all_refs = atoi(value);
 	else if (!strcmp(name, "readme") && value != NULL) {
 		if (repo->readme.items == ctx.cfg.readme.items)
 			memset(&repo->readme, 0, sizeof(repo->readme));
@@ -241,6 +243,8 @@ static void config_cb(const char *name, const char *value)
 				      ctx.cfg.project_list, repo_config);
 		else
 			scan_tree(expand_macros(value), repo_config);
+	else if (!strcmp(name, "show-all-refs"))
+		ctx.cfg.show_all_refs = atoi(value);
 	else if (!strcmp(name, "scan-hidden-path"))
 		ctx.cfg.scan_hidden_path = atoi(value);
 	else if (!strcmp(name, "section-from-path"))
@@ -836,6 +840,7 @@ static void print_repo(FILE *f, struct cgit_repo *repo)
 	fprintf(f, "repo.enable-remote-branches=%d\n", repo->enable_remote_branches);
 	fprintf(f, "repo.enable-subject-links=%d\n", repo->enable_subject_links);
 	fprintf(f, "repo.enable-html-serving=%d\n", repo->enable_html_serving);
+	fprintf(f, "repo.show-all-refs=%d\n", repo->show_all_refs);
 	if (repo->branch_sort == 1)
 		fprintf(f, "repo.branch-sort=age\n");
 	if (repo->commit_sort) {

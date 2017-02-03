@@ -63,6 +63,7 @@ struct cgit_repo *cgit_add_repo(const char *url)
 	ret->enable_remote_branches = ctx.cfg.enable_remote_branches;
 	ret->enable_subject_links = ctx.cfg.enable_subject_links;
 	ret->enable_html_serving = ctx.cfg.enable_html_serving;
+	ret->show_all_refs = ctx.cfg.show_all_refs;
 	ret->max_stats = ctx.cfg.max_stats;
 	ret->branch_sort = ctx.cfg.branch_sort;
 	ret->commit_sort = ctx.cfg.commit_sort;

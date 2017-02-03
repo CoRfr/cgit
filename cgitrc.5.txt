@@ -421,6 +421,10 @@ section-from-path::
 	If negative, cgit will discard the specified number of path elements
 	above the repo directory. Default value: "0".
 
+show-all-refs::
+	Show all types of refs in the log, such as refs/changes/.
+	Default value: "0".
+
 side-by-side-diffs::
 	If set to "1" shows side-by-side diffs instead of unidiffs per
 	default. Default value: "0".
@@ -531,6 +535,10 @@ repo.enable-subject-links::
 repo.enable-html-serving::
 	A flag which can be used to override the global setting
 	`enable-html-serving`. Default value: none.
+
+repo show-all-refs::
+	Show all types of refs in the log, such as refs/changes/.
+	Default value: <show-all-refs>.
 
 repo.hide::
 	Flag which, when set to "1", hides the repository from the repository

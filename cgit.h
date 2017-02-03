@@ -95,6 +95,7 @@ struct cgit_repo {
 	int enable_remote_branches;
 	int enable_subject_links;
 	int enable_html_serving;
+	int show_all_refs;
 	int max_stats;
 	int branch_sort;
 	int commit_sort;
@@ -252,6 +253,7 @@ struct cgit_config {
 	int remove_suffix;
 	int scan_hidden_path;
 	int section_from_path;
+	int show_all_refs;
 	int snapshots;
 	int section_sort;
 	int summary_branches;

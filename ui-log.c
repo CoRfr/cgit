@@ -68,8 +68,11 @@ void show_commit_decorations(struct commit *commit)
 		strncpy(buf, prettify_refname(deco->name), sizeof(buf) - 1);
 		switch(deco->type) {
 		case DECORATION_NONE:
-			/* If the git-core doesn't recognize it,
-			 * don't display anything. */
+			if (!ctx.repo->show_all_refs)
+				break;
+			cgit_log_link(buf, NULL, "unknown-deco", buf, NULL,
+				ctx.qry.vpath, 0, NULL, NULL,
+				ctx.qry.showmsg, 0);
 			break;
 		case DECORATION_REF_LOCAL:
 			cgit_log_link(buf, NULL, "branch-deco", buf, NULL,
